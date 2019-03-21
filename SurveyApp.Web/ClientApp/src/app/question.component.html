@@ -1,0 +1,29 @@
+<div id="container" class="container was-validated">
+  <div *ngIf="showError" class="alert alert-danger" role="alert">
+    <strong><span class="fa fa-exclamation-triangle fa-fw"></span> The following errors occured</strong>
+    <ul>
+      <li *ngFor="let errorMsg of errorMessages">{{errorMsg.message}}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="question != null">
+    <h3>{{question.questionText}}</h3>
+
+    <form role="form" name="form" class="needs-validation" [formGroup]="form" novalidate>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngFor="let answer of question.answers; let i=index">
+            <div class="form-group">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="{{answer.id}}" formControlName="answerId"> {{answer.answerText}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="next()">{{buttonLabel}}</button>
+    </form>
+  </div>
+</div>

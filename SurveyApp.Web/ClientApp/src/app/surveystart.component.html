@@ -1,0 +1,16 @@
+<div id="container" class="container was-validated">
+    <div *ngIf="showError" class="alert alert-danger" role="alert">
+        <strong><span class="fa fa-exclamation-triangle fa-fw"></span> The following errors occured</strong>
+        <ul>
+            <li *ngFor="let errorMsg of errorMessages">{{errorMsg.message}}</li>
+        </ul>
+    </div>
+    <form role="form" name="form"  [formGroup]="form" novalidate>
+        <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" class="form-control" placeholder="Enter your nickname" maxlength="128" formControlName="nickName">
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="start()">Start</button>
+    </form>
+</div>
